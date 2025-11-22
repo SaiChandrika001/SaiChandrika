@@ -1,0 +1,5 @@
+package com.notification.controller;
+
+public class AuthController {
+
+}

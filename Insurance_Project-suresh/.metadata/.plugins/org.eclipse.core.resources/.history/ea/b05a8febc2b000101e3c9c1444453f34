@@ -1,0 +1,11 @@
+package com.support.binding;
+
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class SupportResponse {
+	private String ticketId;
+	private String status;
+	private String message;
+}

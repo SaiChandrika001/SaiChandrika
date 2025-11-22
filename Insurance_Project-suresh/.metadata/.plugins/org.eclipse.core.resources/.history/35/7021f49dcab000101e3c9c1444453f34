@@ -1,0 +1,38 @@
+package com.notification.service;
+
+public class NotificationServiceImpl implements NotificationService{
+	private final NotificationRepository repo;
+
+
+	public NotificationServiceImpl(NotificationRepository repo) {
+	this.repo = repo;
+	}
+
+
+	@Override
+	@Transactional
+	public NotificationResponse send(NotificationRequest request) {
+	Notification n = new Notification();
+	n.setTicketId(request.getTicketId());
+	n.setMessage(request.getMessage());
+	n.setType(request.getType());
+	n.setRecipient(request.getRecipient());
+	n.setStatus("SENT"); // in real world you'd call 3rd party and set status accordingly
+
+
+	Notification saved = repo.save(n);
+
+
+	// Simulate sending: print to console (or integrate with actual provider)
+	System.out.println("[NotificationService] Sent " + request.getType() + " to " + request.getRecipient() + " message=" + request.getMessage());
+
+
+	return new NotificationResponse(saved.getId(), saved.getTicketId(), saved.getStatus(), "Notification queued/sent");
+	}
+
+
+	@Override
+	public List<NotificationResponse> listAll() {
+	return repo.findAll().stream().map(n -> new NotificationResponse(n.getId(), n.getTicketId(), n.getStatus(), n.getMessage())).collect(Collectors.toList());
+	}
+}

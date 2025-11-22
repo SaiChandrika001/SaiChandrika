@@ -1,0 +1,50 @@
+package com.notification.service;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Service;
+
+import com.notification.binding.NotificationRequest;
+import com.notification.binding.NotificationResponse;
+import com.notification.entity.Notification;
+
+import jakarta.transaction.Transactional;
+
+@Service
+public class NotificationServiceImpl implements NotificationService{
+	private final NotificationRepo repo;
+
+
+	public NotificationServiceImpl(NotificationRepo repo) {
+	this.repo = repo;
+	}
+
+
+	@Override
+	@Transactional
+	public NotificationResponse send(NotificationRequest request) {
+	Notification n = new Notification();
+	n.setTicketId(request.getTicketId());
+	n.setMessage(request.getMessage());
+	n.setType(request.getType());
+	n.setRecipient(request.getRecipient());
+	n.setStatus("SENT"); // in real world you'd call 3rd party and set status accordingly
+
+
+	Notification saved = repo.save(n);
+
+
+	// Simulate sending: print to console (or integrate with actual provider)
+	System.out.println("[NotificationService] Sent " + request.getType() + " to " + request.getRecipient() + " message=" + request.getMessage());
+
+
+	return new NotificationResponse(saved.getId(), saved.getTicketId(), saved.getStatus(), "Notification queued/sent");
+	}
+
+
+	@Override
+	public List<NotificationResponse> listAll() {
+	return repo.findAll().stream().map(n -> new NotificationResponse(n.getId(), n.getTicketId(), n.getStatus(), n.getMessage())).collect(Collectors.toList());
+	}
+}

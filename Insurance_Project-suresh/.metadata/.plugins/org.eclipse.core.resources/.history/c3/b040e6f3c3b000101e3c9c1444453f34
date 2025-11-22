@@ -1,0 +1,5 @@
+package com.support.repo;
+
+public interface SupportRepo {
+
+}

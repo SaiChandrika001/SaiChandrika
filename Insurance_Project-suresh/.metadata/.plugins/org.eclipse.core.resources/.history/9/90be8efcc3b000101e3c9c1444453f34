@@ -1,0 +1,6 @@
+package com.support.repo;
+
+public interface SupportRepo extends JpaRepository<SupportTicket, Long>
+{
+
+}

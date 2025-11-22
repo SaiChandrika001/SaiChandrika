@@ -1,0 +1,5 @@
+package com.notification.binding;
+
+public class NotificationRequest {
+
+}

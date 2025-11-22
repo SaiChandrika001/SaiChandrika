@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: INSURANCE
+  boot:
+    admin:
+      client:
+        url: http://localhost:1111
+        instance:
+          name: ${spring.application.name}
+
+server:
+  port: 8091
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'  # very important for Admin
+  endpoint:
+    health:
+      show-details: always
+  # remove management.server.port, default is same as server.port
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true

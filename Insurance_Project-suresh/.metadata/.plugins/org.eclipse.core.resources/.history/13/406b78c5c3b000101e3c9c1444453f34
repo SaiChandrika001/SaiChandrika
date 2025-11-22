@@ -1,0 +1,5 @@
+package com.support.entity;
+
+public class SupportTicket {
+
+}

@@ -1,0 +1,17 @@
+package com.support.entity;
+
+import jakarta.persistence.Entity;
+import lombok.Data;
+
+@Data
+@Entity
+public class SupportTicket {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long ticketId;
+	private String userId;
+	private String issueType;
+	private String description;
+	private String priority;
+	private String status;
+}

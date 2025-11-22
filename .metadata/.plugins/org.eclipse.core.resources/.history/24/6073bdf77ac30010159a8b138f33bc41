@@ -1,0 +1,5 @@
+package com.number.binding;
+
+public class CitizenRequest {
+
+}

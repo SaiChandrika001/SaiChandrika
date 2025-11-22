@@ -1,0 +1,7 @@
+<html>
+<body style="color:orange;">
+<h2>⚠️ 500 - Internal Server Error</h2>
+<p>${errorMessage}</p>
+<a href="/home">Go Back Home</a>
+</body>
+</html>

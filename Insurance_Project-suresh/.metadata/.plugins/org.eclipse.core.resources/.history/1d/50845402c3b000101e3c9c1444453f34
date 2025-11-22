@@ -1,0 +1,5 @@
+package com.support.binding;
+
+public class ErrorResponse {
+
+}

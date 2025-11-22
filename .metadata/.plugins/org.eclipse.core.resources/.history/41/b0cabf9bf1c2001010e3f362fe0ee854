@@ -1,0 +1,57 @@
+#################################################################
+### BASIC CONFIG
+#################################################################
+spring.application.name=ClaimsServiceModule
+server.port=8083
+spring.devtools.restart.enabled=true
+
+
+#################################################################
+### DATABASE (MYSQL)
+#################################################################
+spring.datasource.url=jdbc:mysql://localhost:3306/claims_db
+spring.datasource.username=root
+spring.datasource.password=2533
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+
+
+#################################################################
+### SWAGGER - OPEN API
+#################################################################
+springdoc.api-docs.path=/v3/api-docs
+springdoc.swagger-ui.path=/swagger-ui.html
+springdoc.swagger-ui.enabled=true
+
+
+#################################################################
+### EUREKA CLIENT
+#################################################################
+eureka.client.service-url.defaultZone=http://localhost:8761/eureka/
+eureka.client.register-with-eureka=true
+eureka.client.fetch-registry=true
+eureka.instance.prefer-ip-address=true
+
+
+#################################################################
+### SPRING BOOT ADMIN CLIENT
+#################################################################
+spring.boot.admin.client.url=http://localhost:1111
+management.endpoints.web.exposure.include=*
+management.endpoint.health.show-details=always
+
+
+#################################################################
+### ZIPKIN + MICROMETER TRACING  (Boot 3 Compatible)
+#################################################################
+management.tracing.sampling.probability=1.0
+management.zipkin.tracing.endpoint=http://localhost:9411/api/v2/spans
+
+
+#################################################################
+### LOGGING
+#################################################################
+logging.level.org.springframework.web=INFO
+logging.level.com.demo=DEBUG

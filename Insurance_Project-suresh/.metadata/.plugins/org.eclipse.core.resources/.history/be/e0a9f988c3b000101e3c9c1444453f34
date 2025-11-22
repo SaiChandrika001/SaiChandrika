@@ -1,0 +1,6 @@
+package com.support.service;
+
+public interface SupportService {
+	SupportResponse createTicket(SupportRequest request);
+	List<SupportResponse> getAllTickets();
+}

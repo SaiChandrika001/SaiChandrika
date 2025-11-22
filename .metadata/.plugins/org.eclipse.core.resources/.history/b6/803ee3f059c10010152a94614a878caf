@@ -1,0 +1,15 @@
+//package com.demo.configuration;
+//
+//import org.springframework.cloud.openfeign.FeignClient;
+//import org.springframework.web.bind.annotation.GetMapping;
+//import org.springframework.web.bind.annotation.PathVariable;
+//
+//import com.insurance.ed.binding.EligibilityResponse; 
+//
+//
+//@FeignClient(name = "ELIGIBILITY-DETERMINATION-API")
+//public interface EligibilityClient {
+//
+//    @GetMapping("/eligibility/status/{caseId}")
+//    EligibilityResponse getEligibility(@PathVariable("caseId") Integer caseId);
+//}

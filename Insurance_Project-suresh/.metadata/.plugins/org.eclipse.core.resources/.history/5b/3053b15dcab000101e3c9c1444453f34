@@ -1,0 +1,5 @@
+package com.notification.client;
+
+public interface SupportClient {
+
+}

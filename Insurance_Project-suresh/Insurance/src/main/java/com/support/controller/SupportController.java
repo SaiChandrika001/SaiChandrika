@@ -1,0 +1,34 @@
+package com.support.controller;
+
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.support.binding.SupportRequest;
+import com.support.binding.SupportResponse;
+import com.support.service.SupportService;
+
+@RestController
+@RequestMapping("/api/support")
+public class SupportController {
+    private final SupportService service;
+
+    public SupportController(SupportService service) {
+        this.service = service;
+    }
+
+    @PostMapping("/create")
+    public ResponseEntity<SupportResponse> createTicket(@RequestBody SupportRequest request) {
+        return ResponseEntity.ok(service.createTicket(request));
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<SupportResponse>> getAllTickets() {
+        return ResponseEntity.ok(service.getAllTickets());
+    }
+}

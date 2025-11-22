@@ -1,0 +1,5 @@
+package com.ar_registration.controller;
+
+public class UserController {
+
+}

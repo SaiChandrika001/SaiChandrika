@@ -1,0 +1,22 @@
+admin:
+  enabled: true
+#'\t	spring:
+#	    application:
+#	            name: ConfigurationProps-demo
+#	       
+#	server:
+#	    port: 9091
+#	            
+#	            
+#	            
+#	orders:
+#	    allowed-limit: 1000
+#	    items:
+#	      -name:Keyboard
+#	       sku:KB-001
+#	       price:499
+#	       quantity:10
+#	      -name:Mouse
+#	       sku:Ms-001
+#	       price:299
+#	       quantity:0  #will fail validation(@Min(1))\t'

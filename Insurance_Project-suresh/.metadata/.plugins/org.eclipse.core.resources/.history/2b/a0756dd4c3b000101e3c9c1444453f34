@@ -1,0 +1,46 @@
+package com.support.service;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import com.support.binding.SupportRequest;
+import com.support.binding.SupportResponse;
+
+public class SupportServiceImpl implements SupportService{
+
+	private final SupportRepo repo;
+	private final NotificationClient client;
+
+
+	public SupportServiceImpl(SupportRepo repo, NotificationClient client) {
+	this.repo = repo;
+	this.client = client;
+	}
+
+
+	@Override
+	public SupportResponse createTicket(SupportRequest request) {
+	SupportTicket ticket = new SupportTicket();
+	ticket.setUserId(request.getUserId());
+	ticket.setIssueType(request.getIssueType());
+	ticket.setDescription(request.getDescription());
+	ticket.setPriority(request.getPriority());
+	ticket.setStatus("OPEN");
+
+
+	SupportTicket saved = repo.save(ticket);
+
+
+	SupportResponse response = new SupportResponse(saved.getTicketId(), saved.getStatus(), "Ticket created successfully");
+	client.sendNotification(response);
+	return response;
+	}
+
+
+	@Override
+	public List<SupportResponse> getAllTickets() {
+	return repo.findAll().stream()
+	.map(t -> new SupportResponse(t.getTicketId(), t.getStatus(), t.getDescription()))
+	.collect(Collectors.toList());
+	}
+}

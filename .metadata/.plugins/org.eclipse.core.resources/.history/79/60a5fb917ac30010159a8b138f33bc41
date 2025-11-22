@@ -1,0 +1,13 @@
+package com.number;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class CaseWorkerApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(CaseWorkerApplication.class, args);
+	}
+
+}

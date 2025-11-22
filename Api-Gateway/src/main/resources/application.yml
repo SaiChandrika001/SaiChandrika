@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: insurance
+          uri: lb://INSURANCE
+          predicates:
+            - Path=/insurance/**
+        - id: notification
+          uri: lb://NOTIFICATION
+          predicates:
+            - Path=/notification/**
+        - id: claims
+          uri: lb://CLAIMS
+          predicates:
+            - Path=/claims/**

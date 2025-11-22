@@ -1,0 +1,22 @@
+package com.support.binding;
+
+import lombok.Data;
+
+@Data
+////@NoArgsConstructor
+//@AllArgsConstructor
+public class SupportResponse {
+	   private Long id;
+	    private String title;
+	  
+	private Long ticketId;
+	private String status;
+	private String message;
+	
+	 public SupportResponse(Long ticketId, String status, String message) {
+	        this.ticketId = ticketId;
+	        this.status = status;
+	        this.message = message;
+
+	 }
+}
