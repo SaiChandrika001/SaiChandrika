@@ -1,0 +1,51 @@
+package com.number.binding;
+import java.time.LocalDate;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
+import lombok.Data;
+
+@Data
+public class CitizenRequest {
+
+	private String fullName;
+	
+	private Long phno;
+	
+	private String email;
+	
+	private String gender;
+	
+	private Long ssn;
+
+	private LocalDate dob;
+	
+	private String stateName;
+	
+	@Column(name = "CREATED_BY")
+	private String createdBy;
+	
+	@Column(name = "UPDATED_BY")
+	private String updatedBy;
+	
+	@Column(name = "CREATED_DATE", updatable = false)
+	private LocalDate createdDate;
+	
+	@Column(name = "UPDATED_DATE")
+	private LocalDate updatedDate;
+	
+	 @PrePersist
+	  public void prePersist() {
+	  createdDate = LocalDate.now();
+	  updatedDate = createdDate;
+	 }
+	 
+	 @PreUpdate
+	 public void preUpdate() {
+     updatedDate = LocalDate.now();
+	    }
+
+	
+	
+}
