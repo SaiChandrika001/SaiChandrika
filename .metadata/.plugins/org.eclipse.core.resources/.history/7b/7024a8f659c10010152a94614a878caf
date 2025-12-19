@@ -1,9 +1,0 @@
-package com.demo.configuration;
-
-import org.springframework.cloud.openfeign.FeignClient;
-
-@FeignClient(name = "ADMIN-SERVICE")
-public interface AdminFeignClient {
-    @GetMapping("/admin/api/plans/getAllPlans")
-    Map<Integer, String> getAllPlans();
-}

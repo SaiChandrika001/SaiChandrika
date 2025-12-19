@@ -8,7 +8,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 //@EnableDiscoveryClient 
-@EnableFeignClients     
+@EnableFeignClients("https:localhost:808")   
 //@EnableAdminServer
 public class ClaimsServiceModule {
 
